@@ -1,0 +1,8 @@
+messages/
+__pycache__/
+db.index
+db.json
+message_parse.py
+messages.*
+readme.md
+test.py
