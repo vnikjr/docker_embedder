@@ -3,7 +3,6 @@ import socketserver
 import json
 import sentence_transformers
 import torch
-from toml_loader import get_config
 
 if torch.cuda.is_available():
     device = torch.device("cuda")
@@ -11,7 +10,6 @@ if torch.cuda.is_available():
     print("There are %d GPU(s) available." % torch.cuda.device_count())
     print("GPU is:", torch.cuda.get_device_name(0))
 else:
-    #TODO: install cuda
     print("No GPU available, using the CPU instead.")
     device = torch.device("cpu")
     use_cuda = False
@@ -38,7 +36,7 @@ class MyHttpRequestHandler(http.server.SimpleHTTPRequestHandler):
         self.wfile.write(json.dumps(result).encode('utf-8'))
 
 if __name__ == "__main__":
-    PORT = get_config()["embeder"]["port"]
+    PORT = 900
     Handler = MyHttpRequestHandler
     with socketserver.TCPServer(("", PORT), Handler) as httpd:
         print("serving at port", PORT)

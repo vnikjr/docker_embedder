@@ -12,11 +12,11 @@ COPY requirements.txt /app
 # Install any needed packages specified in requirements.txt
 RUN pip3 install --no-cache-dir -r requirements.txt
 RUN python -c "from transformers import AutoModel, AutoTokenizer; \
-model_name = 'intfloat/multilingual-e5-large'; \
-AutoTokenizer.from_pretrained(model_name); \
-AutoModel.from_pretrained(model_name)"
+    model_name = 'intfloat/multilingual-e5-large'; \
+    AutoTokenizer.from_pretrained(model_name); \
+    AutoModel.from_pretrained(model_name)"
 
 COPY . /app
 
 # Run both scripts concurrently
-CMD ["bash", "-c", "python3 basic_html_server_embeder.py & python3 db.py"]
+CMD "python3 basic_html_server_embeder.py"

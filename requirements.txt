@@ -1,7 +1,4 @@
 torch
-toml
 requests
-faiss-cpu
-faiss-gpu
 sentence-transformers
 numpy
